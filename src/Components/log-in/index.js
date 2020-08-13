@@ -1,16 +1,16 @@
 import React from "react"
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-import Developer from './developer'
+import Inputs from './inputs'
 
-const About = () => (
+
+const Login = () => (
     <>
         <Div>
-             <h1>Team Members</h1>
-        </Div>        
-        <Developer />
-        <Developer />
-        <Developer />
+             <h1>Login</h1>
+        </Div>  
+        <Inputs />      
+
     </>
 )
 
@@ -21,4 +21,4 @@ const Div = styled.div`
     justify-content: center;
 `
 
-export default About
+export default Login

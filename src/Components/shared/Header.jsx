@@ -4,14 +4,17 @@ import styled from 'styled-components'
 
 const Header = () => (
     <Container>
-        <Button color={ 'green' }><Link to='/hello' >hello</Link></Button>
-        <Button color={ 'blue' }><Link to='/about' >about</Link></Button>
+        <Button color={ 'lightpurple' }><Link to='/home' >home</Link></Button>
+        <Button color={ 'lightgreen' }><Link to='/books' >books</Link></Button>
+        <Button color={ 'orange' }><Link to='/about' >about</Link></Button>
+        <Button color={ 'yellow' }><Link to='/login' >login</Link></Button>
+        <Button color={ 'pink' }><Link to='/signup' >signup</Link></Button>
     </Container>
 )
 
 const Container = styled.header`
     padding: 20px;
-    background-color: darkblue;
+    background-color: lightblue;
 `
 
 const Button = styled.button`

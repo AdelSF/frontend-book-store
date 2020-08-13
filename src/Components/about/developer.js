@@ -1,24 +1,22 @@
 import React from "react"
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-import Developer from './developer'
 
-const About = () => (
+
+const Developer = () => (
     <>
         <Div>
-             <h1>Team Members</h1>
+             <h1>Developer info here</h1>
         </Div>        
-        <Developer />
-        <Developer />
-        <Developer />
     </>
 )
 
 const Div = styled.div`
+    background-color: orange;
     margin: 1% 20%;
     padding: 1%;
     display: flex;
     justify-content: center;
 `
 
-export default About
+export default Developer

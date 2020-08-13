@@ -1,16 +1,18 @@
 import React from "react"
 import { Link } from 'react-router-dom'
+import Download from './download'
+import Upload from './upload'
 import styled from 'styled-components'
-import Developer from './developer'
 
-const About = () => (
+
+const Books = () => (
     <>
         <Div>
-             <h1>Team Members</h1>
+             <h1>Download and Upload Books</h1>
         </Div>        
-        <Developer />
-        <Developer />
-        <Developer />
+        <Upload />
+        <Download />
+
     </>
 )
 
@@ -21,4 +23,4 @@ const Div = styled.div`
     justify-content: center;
 `
 
-export default About
+export default Books

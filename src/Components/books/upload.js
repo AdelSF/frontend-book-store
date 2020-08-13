@@ -1,24 +1,20 @@
 import React from "react"
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-import Developer from './developer'
 
-const About = () => (
+
+const Upload = () => (
     <>
         <Div>
-             <h1>Team Members</h1>
-        </Div>        
-        <Developer />
-        <Developer />
-        <Developer />
+             <h1>Upload Section</h1>
+        </Div>
     </>
 )
-
 const Div = styled.div`
-    margin: 1% 20%;
+    background-color: lightgreen;
+    margin: 2% 20%;
     padding: 1%;
     display: flex;
     justify-content: center;
 `
-
-export default About
+export default Upload
