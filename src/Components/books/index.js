@@ -8,7 +8,7 @@ import styled from 'styled-components'
 const Books = () => (
     <>
         <Div>
-             <h1>Download and Upload Books</h1>
+             <h1>Download and Upload Book</h1>
         </Div>        
         <Upload />
         <Download />

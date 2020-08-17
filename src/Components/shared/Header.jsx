@@ -4,7 +4,7 @@ import styled from 'styled-components'
 
 const Header = () => (
     <Container>
-        <Button color={ 'lightpurple' }><Link to='/home' >home</Link></Button>
+        <Button color={ 'lightpurple' }><Link to='/' >home</Link></Button>
         <Button color={ 'lightgreen' }><Link to='/books' >books</Link></Button>
         <Button color={ 'orange' }><Link to='/about' >about</Link></Button>
         <Button color={ 'yellow' }><Link to='/login' >login</Link></Button>

@@ -2,6 +2,7 @@ import React from "react"
 // import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import Popular from './popular'
+import Search from './search'
 
 const Home = () => {
     return (
@@ -9,7 +10,10 @@ const Home = () => {
             <Div>
                 <h1>Welcome to the Bookstore</h1>
             </Div>
-            <Popular />  
+            <Div>
+                <Search />
+            </Div>
+            {/* <Popular />   */}
         </>
     )
 }
