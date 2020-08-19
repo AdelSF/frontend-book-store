@@ -1,8 +1,8 @@
 import React from "react"
 // import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-import Popular from './popular'
 import Search from './search'
+import Popular from './popular'
 
 const Home = () => {
     return (
@@ -11,9 +11,9 @@ const Home = () => {
                 <h1>Welcome to the Bookstore</h1>
             </Div>
             <Div>
-                <Search />
+                {/* <Search /> */}
+                <Popular />
             </Div>
-            {/* <Popular />   */}
         </>
     )
 }

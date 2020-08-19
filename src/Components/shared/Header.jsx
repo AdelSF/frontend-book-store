@@ -4,16 +4,14 @@ import styled from 'styled-components'
 
 const Header = () => (
     <Container>
-        <Button color={ 'lightpurple' }><Link to='/' >home</Link></Button>
-        <Button color={ 'lightgreen' }><Link to='/books' >books</Link></Button>
+        <Image src="../assets/logo.png" alt="logo"/>
         <Button color={ 'orange' }><Link to='/about' >about</Link></Button>
-        <Button color={ 'yellow' }><Link to='/login' >login</Link></Button>
-        <Button color={ 'pink' }><Link to='/signup' >signup</Link></Button>
+        <Button color={ 'lightpurple' }><Link to='/' >home</Link></Button>
     </Container>
 )
 
 const Container = styled.header`
-    padding: 20px;
+    padding: 5px;
     background-color: lightblue;
 `
 
@@ -21,6 +19,13 @@ const Button = styled.button`
     width: 100px;
     height: 20px;
     background-color: ${({color}) => color};
+    float: right;
+`
+
+const Image = styled.img`
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
 `
 
 export default Header

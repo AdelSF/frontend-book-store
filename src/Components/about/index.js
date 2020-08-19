@@ -9,8 +9,6 @@ const About = () => (
              <h1>Team Members</h1>
         </Div>        
         <Developer />
-        <Developer />
-        <Developer />
     </>
 )
 

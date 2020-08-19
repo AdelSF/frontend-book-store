@@ -6,7 +6,7 @@ const Popular = () => {
     return (
         <>
             <Div>
-                <h1>Most popular books to download here</h1>
+                <h1>10 books here</h1>
             </Div>
         </>
     )
