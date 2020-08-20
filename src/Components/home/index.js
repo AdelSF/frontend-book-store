@@ -1,8 +1,7 @@
 import React from "react"
 // import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-import Search from './search'
-import Popular from './popular'
+import Books from './books'
 
 const Home = () => {
     return (
@@ -12,7 +11,7 @@ const Home = () => {
             </Div>
             <Div>
                 {/* <Search /> */}
-                <Popular />
+                <Books />
             </Div>
         </>
     )

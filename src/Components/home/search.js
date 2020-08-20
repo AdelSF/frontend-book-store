@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios'
 import styled from 'styled-components'
-import { search } from 'html-webpack-template'
 
 
 function Search() {
@@ -11,7 +10,7 @@ function Search() {
     const [apiKey, setApiKey] = useState("AIzaSyCkHETEzRqprKXBlK6PLoaEOHcNJJWOT8U")
 
     
-    function handleChange(event) {
+    function handleChange() {
 
         const book = event.target.value
         setBook(book)
@@ -21,10 +20,9 @@ function Search() {
         event.preventDefault()
         axios.get("https://www.googleapis.com/books/v1/volumes?q=" + book + "&key=" + apiKey + "&maxResults=20")
         .then(data => {
-            console.log(data.data.items)
+            // console.log(data.data.items)
             setResult(data.data.items)
         })
-
     }
 
     return (
