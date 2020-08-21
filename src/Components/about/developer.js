@@ -3,10 +3,14 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 
+
 const Developer = () => (
     <>
         <Div>
-             <h1>Developer info here</h1>
+            <h1>More info</h1>
+                <p>Adel Pakrad - web developement project of book store
+            </p>
+            <img src="../assets/logo.png" alt="image"/>
         </Div>        
     </>
 )
