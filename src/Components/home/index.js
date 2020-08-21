@@ -6,22 +6,13 @@ import Books from './books'
 const Home = () => {
     return (
         <>
-            <Div>
+            <div>
                 <h1>Welcome to the Bookstore</h1>
-            </Div>
-            <Div>
                 {/* <Search /> */}
                 <Books />
-            </Div>
+            </div>
         </>
     )
 }
 
-const Div = styled.div`
-    background-color: lightgray;
-    margin: 2% 20%;
-    padding: 1%;
-    display: flex;
-    justify-content: center;
-`
 export default Home
