@@ -3,7 +3,8 @@ const baseConfig = require('./webpack.base.js');
 
 const config = {
     devServer: {
-        hot: true
+        hot: true,
+        historyApiFallback: true,
     },
     mode: 'development'
 }

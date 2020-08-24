@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom'
 import axios from 'axios';
 import styled from 'styled-components';
 
@@ -24,12 +25,16 @@ class Books extends React.Component {
     .then(res => res.json())
     .then((res) => {
         this.setState({ items: res.items })
+        const books = JSON.stringify(res.items)
+        localStorage.setItem('books', books)
     })
   }
   
     render() {
       const { items } = this.state;
-      console.log(items)
+      // console.log(items)
+      console.log("items ", items);
+
       return (
         <>
           <form>
@@ -40,9 +45,9 @@ class Books extends React.Component {
           <ul className="image">
             {items.map(item => (
               <li style={liStyle} key={item.id}>
-                <a>
+                <Link to={item.id}>
                   <img style={imgStyle} src={item.volumeInfo.imageLinks.thumbnail} alt={items.title} />
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
