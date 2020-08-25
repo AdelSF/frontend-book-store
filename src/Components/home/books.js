@@ -1,40 +1,21 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import styled from 'styled-components'
 import { Link } from 'react-router-dom'
-import axios from 'axios';
-import styled from 'styled-components';
+import { connect } from 'react-redux'
+import { getBooksRequest } from './../../Redux/actions'
 
-
-const imgStyle = {
-  backgroundColor: 'red',
-}
-
-const liStyle = {
-  listStyleType: 'none',
-  display: 'inline',
-}
 
 class Books extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {items: []}
   }
-  
 
   componentDidMount() {
-    fetch("https://www.googleapis.com/books/v1/volumes?q=" + "javascript" + "&key=" + "AIzaSyCkHETEzRqprKXBlK6PLoaEOHcNJJWOT8U" + "&maxResults=10")
-    .then(res => res.json())
-    .then((res) => {
-        this.setState({ items: res.items })
-        const books = JSON.stringify(res.items)
-        localStorage.setItem('books', books)
-    })
+    this.props.getBooksRequest()
   }
   
     render() {
-      const { items } = this.state;
-      // console.log(items)
-      console.log("items ", items);
-
+      const { books } = this.props;
       return (
         <>
           <form>
@@ -43,10 +24,10 @@ class Books extends React.Component {
             </label>
           </form>
           <ul className="image">
-            {items.map(item => (
-              <li style={liStyle} key={item.id}>
-                <Link to={item.id}>
-                  <img style={imgStyle} src={item.volumeInfo.imageLinks.thumbnail} alt={items.title} />
+            {books.map(book => (
+              <li key={book.id}>
+                <Link to={book.id}>
+                  <img src={book.volumeInfo.imageLinks.thumbnail} alt={book.title} />
                 </Link>
               </li>
             ))}
@@ -56,7 +37,25 @@ class Books extends React.Component {
   }
 }
 
-export default Books
+const mapDispatchToProps = dispatch => {
+  return {
+    getBooksRequest: () => dispatch(getBooksRequest)
+}}
+const mapStateToProps = state => ({
+  books: state.books
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Books)
+
+
+
+
+
+
+
+
+
+
 
 
 
