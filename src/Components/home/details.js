@@ -6,32 +6,24 @@ import { connect } from 'react-redux'
 class Details extends React.Component {
 
   render() {
-    const { books } = this.props;
-    const id = location.pathname.replace('/','')
-    let book;
-    for(var i = 0; i < 10; i++){
-      if (id === books[i].id) {
-          book = books[i]
-          console.log(book);
-      } 
-    }
+    const { book } = this.props;
     return (
       <Container>
           <Div>
+              ID: 
+              {book.id}
+          </Div>
+          <Div>
               Authors: 
-              {book.volumeInfo.authors}
+              {book.author}   
           </Div>
           <Div>
               categories: 
-              {book.volumeInfo.categories}   
-          </Div>
-          <Div>
-              title: 
-              {book.volumeInfo.title}   
+              {book.name}   
           </Div>
 
-           <Image width={200} src={book.volumeInfo.imageLinks.thumbnail} alt={book.volumeInfo.title}></Image>
-           <Image width={300} src={book.volumeInfo.imageLinks.thumbnail} alt={book.volumeInfo.title}></Image>
+           {/* <Image width={200} src={book.volumeInfo.imageLinks.thumbnail} alt={book.volumeInfo.title}></Image> */}
+           {/* <Image width={300} src={book.volumeInfo.imageLinks.thumbnail} alt={book.volumeInfo.title}></Image> */}
           
       </Container>
     )
@@ -39,10 +31,30 @@ class Details extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  books: state.books
+  book: state.book
 })
 
 export default connect(mapStateToProps, null)(Details)
+
+const Container = styled.section`
+  padding: 4em;
+`;
+
+const Div = styled.div`
+  padding: 1em;
+  background: white;
+  display: block;
+`;
+ 
+const Image  = styled.img`
+  width: ${(props) => props.width}px;
+  margin: 20px;
+  padding: 20px;
+  background: red;
+  /* display: inline; */
+`; 
+
+
 
 
 // function Details() {
@@ -69,23 +81,7 @@ export default connect(mapStateToProps, null)(Details)
 //     )
 //   }
 
-const Container = styled.section`
-  padding: 4em;
-`;
 
-const Div = styled.div`
-  padding: 1em;
-  background: white;
-  display: block;
-`;
- 
-const Image  = styled.img`
-  width: ${(props) => props.width}px;
-  margin: 20px;
-  padding: 20px;
-  background: red;
-  /* display: inline; */
-`; 
 
 
 

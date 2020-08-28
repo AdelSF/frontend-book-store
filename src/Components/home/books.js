@@ -2,45 +2,63 @@ import React from 'react';
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { getBooksRequest } from './../../Redux/actions'
+import { getBooksRequest, getBookDetails } from './../../Redux/actions'
 
 
 class Books extends React.Component {
-  constructor(props) {
-    super(props)
-  }
 
   componentDidMount() {
     this.props.getBooksRequest()
   }
+
+  handleClick(id) {
+    this.props.getBookDetails(id, this.props.books)
+  }
   
-    render() {
-      const { books } = this.props;
-      return (
-        <>
-          <form>
-            <label>
-              10 Javascript Books Name: 
-            </label>
-          </form>
-          <ul className="image">
-            {books.map(book => (
-              <li key={book.id}>
-                <Link to={book.id}>
-                  <img src={book.volumeInfo.imageLinks.thumbnail} alt={book.title} />
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </>
+  render() {
+    const { books } = this.props;
+    return (
+      <>
+        <form>
+          <Label>
+            10 Javascript Books Name: 
+          </Label>
+        </form>
+        <ul className="image">
+          {books.map(book => (
+            <Li key={book.id}>
+              <Link to={'book.id'} onClick={ () => this.handleClick(book.id) }>
+                <div>
+                   book author: 
+                    {book.author}  
+                </div>
+                {/* <img src={book.volumeInfo.imageLinks.thumbnail} alt={book.title} /> */}
+              </Link>
+            
+            </Li>
+          ))}
+        </ul>
+      </>
     )
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    getBooksRequest: () => dispatch(getBooksRequest)
-}}
+const Label = styled.label`
+  margin: 4em;
+  background-color: lightgray;
+`;
+
+const Li = styled.li`
+  margin: 2em;
+  background: gray;
+  display: inline;
+
+`;
+
+const mapDispatchToProps = dispatch => ({
+    getBooksRequest: () => dispatch(getBooksRequest),
+    getBookDetails: (id, books) => dispatch(getBookDetails(id, books))
+})
 const mapStateToProps = state => ({
   books: state.books
 })
