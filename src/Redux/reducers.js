@@ -1,5 +1,6 @@
 import {
   GET_BOOKS,
+  GET_BOOK,
   GET_BOOKS_DETAILS
 } from './actions'
 
@@ -17,6 +18,8 @@ export function book(state = {}, action) {
     case GET_BOOKS_DETAILS:
       const { id, books } = action.payload
       return books.filter(book => book.id === id)[0]
+    case GET_BOOK:
+      return action.payload
     default:
       return state
   }

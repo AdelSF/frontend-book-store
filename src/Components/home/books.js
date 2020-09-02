@@ -18,42 +18,34 @@ class Books extends React.Component {
   render() {
     const { books } = this.props;
     return (
-      <>
-        <form>
-          <Label>
-            10 Javascript Books Name: 
-          </Label>
-        </form>
-        <ul className="image">
-          {books.map(book => (
-            <Li key={book.id}>
-              <Link to={'book.id'} onClick={ () => this.handleClick(book.id) }>
-                <div>
-                   book author: 
-                    {book.author}  
-                </div>
-                {/* <img src={book.volumeInfo.imageLinks.thumbnail} alt={book.title} /> */}
-              </Link>
-            
-            </Li>
-          ))}
-        </ul>
-      </>
+      <Images>
+        {books.map(book => (
+          <Image key={book.id}>
+            <Link to={`${book.id}`} onClick={ () => this.handleClick(book.id) }>
+              <Img src={book.img} alt={book.name} />
+              <p>{book.name}</p>
+            </Link>
+          </Image>
+        ))}
+      </Images>
     )
   }
 }
 
-const Label = styled.label`
-  margin: 4em;
-  background-color: lightgray;
-`;
+const Images = styled.ul`
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: none;
+`
 
-const Li = styled.li`
-  margin: 2em;
-  background: gray;
-  display: inline;
+const Image = styled.li`
+  margin: 1.3rem;
+`
 
-`;
+const Img = styled.img`
+  width: 200px;
+  height: 320px;
+`
 
 const mapDispatchToProps = dispatch => ({
     getBooksRequest: () => dispatch(getBooksRequest),
@@ -69,21 +61,12 @@ export default connect(mapStateToProps, mapDispatchToProps)(Books)
 
 
 
-
-
-
-
-
-
-
-
-
 // same component with React hooks and axios
 
 // function Books() {
 
 //     const [result, setResult] = useState([])
-//     const apiKey = "AIzaSyCkHETEzRqprKXBlK6PLoaEOHcNJJWOT8U"
+//     const apiKey = ""AIzaSyCkHETEzRqprKXBlK6PLoaEOHcNJJWOT8U
 
 
 //     function loadBook() {

@@ -2,29 +2,64 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 import styled from 'styled-components';
 import { connect } from 'react-redux'
+import { getBookById } from '../../Redux/actions'
 
 class Details extends React.Component {
 
+  componentDidMount() {
+    if (Object.keys(this.props.book).length === 0) {
+      const id = location.pathname.replace('/', '')
+      this.props.getBookById(id)
+    }
+  }
+
   render() {
-    const { book } = this.props;
+    const { name, author, year, country, img, series, contributors, edition, grade, keywords } = this.props.book;
     return (
       <Container>
+        <ContainerDetails>
           <Div>
-              ID: 
-              {book.id}
+              Title: 
+              {name}   
           </Div>
           <Div>
               Authors: 
-              {book.author}   
+              {author}   
           </Div>
           <Div>
-              categories: 
-              {book.name}   
+              Year of Publish: 
+              {year}   
           </Div>
-
-           {/* <Image width={200} src={book.volumeInfo.imageLinks.thumbnail} alt={book.volumeInfo.title}></Image> */}
-           {/* <Image width={300} src={book.volumeInfo.imageLinks.thumbnail} alt={book.volumeInfo.title}></Image> */}
-          
+          <Div>
+              Country: 
+              {country}   
+          </Div>
+          <Div>
+              Series: 
+              {series}   
+          </Div>
+          <Div>
+              Contributors : 
+              {contributors}   
+          </Div>
+          <Div>
+              Edition: 
+              {edition}   
+          </Div>
+          <Div>
+              Grade : 
+              {grade}   
+          </Div>
+          <Div>
+              Keywords: 
+              {keywords}   
+          </Div>
+        <Button><Link to='/editbook'>Edit Book</Link></Button>
+        <Button>Order Book</Button>
+        </ContainerDetails>
+        <Div>
+          <Image src={img}></Image>
+        </Div>
       </Container>
     )
   }
@@ -34,25 +69,44 @@ const mapStateToProps = state => ({
   book: state.book
 })
 
-export default connect(mapStateToProps, null)(Details)
+const mapDispatchToProps = dispatch => ({
+  getBookById: (id) => dispatch(getBookById(id))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Details)
 
 const Container = styled.section`
+  display: flex;
   padding: 4em;
+  border: 10px solid gray;
+`;
+const ContainerDetails = styled.div`
+  font-size: 1.5rem;
+  border: 4px solid lightgray;
 `;
 
 const Div = styled.div`
-  padding: 1em;
-  background: white;
-  display: block;
+  padding: .8rem;
 `;
  
 const Image  = styled.img`
-  width: ${(props) => props.width}px;
-  margin: 20px;
-  padding: 20px;
-  background: red;
-  /* display: inline; */
+  width: 400px;
+  margin-left: 10rem;
+  /* padding: 20px; */
 `; 
+
+const Button = styled.button`
+margin: 3rem;
+width: 300px;
+height: 35px;
+background-color: #5995ef;
+color: #fff;
+border-radius: 3px;
+`;
+
+
+
+
 
 
 
