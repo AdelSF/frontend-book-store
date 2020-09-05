@@ -96,12 +96,12 @@ const Image  = styled.img`
 `; 
 
 const Button = styled.button`
-margin: 3rem;
-width: 300px;
-height: 35px;
-background-color: #5995ef;
-color: #fff;
-border-radius: 3px;
+  margin: 3rem;
+  width: 300px;
+  height: 35px;
+  background-color: #5995ef;
+  color: #fff;
+  border-radius: 3px;
 `;
 
 
