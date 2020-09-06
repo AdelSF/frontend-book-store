@@ -30,16 +30,13 @@ class Editbook extends React.Component {
       } 
 
     onChange(e) {
-        // this.setState({ book[e.target.name]: e.target.value });
-
-        this.setState((state, props) => {
-            return { book: {
-                [e.target.name]: e.target.value
-            } }
-        })
+        let book = {
+            ...this.state.book,
+            [e.target.name]: e.target.value
+        }
+        this.setState({ book })
     }
 
-    // here needs edit
     onSubmit(e) {
         e.preventDefault();
         this.props.editBookRequest(this.state)
@@ -59,7 +56,6 @@ class Editbook extends React.Component {
     }
  
     render() {
-        console.log('this => ', this);
         const { name, author, year, country, img, series, contributors, edition, grade, keywords } = this.state.book
         return (
             <>
