@@ -4,7 +4,8 @@ export const POST_BOOKS = 'POST_BOOK'
 export const GET_BOOKS = 'GET_BOOKS'
 export const GET_BOOK = 'GET_BOOK'
 export const GET_BOOKS_DETAILS = 'GET_BOOKS_DETAILS'
-//export const EDIT_BOOK  = 'EDIT_BOOK'
+//here
+export const EDIT_BOOK  = 'EDIT_BOOK'
 
 export const getBookDetails = (id, books) => ({
     type: GET_BOOKS_DETAILS,
@@ -26,10 +27,10 @@ export const getBook = (book) => ({
     payload: book
 })
 
-// export const editBook = (book) => ({
-//     type: EDIT_BOOK,
-//     payload: book
-// })
+export const editBook = (book) => ({
+    type: EDIT_BOOK,
+    payload: book
+})
 
 export const getBooksRequest = dispatch => {
     // fetch("https://www.googleapis.com/books/v1/volumes?q=" + "javascript" + "&key=" + "AIzaSyCkHETEzRqprKXBlK6PLoaEOHcNJJWOT8U" + "&maxResults=10")
@@ -53,7 +54,9 @@ export const postBookRequest = book => dispatch => (
 export const editBookRequest = book => dispatch => (
     axios.put("http://localhost:3000/editbook", book)
     .then(res => {
-        //dispatch(editBook)
+        console.log("res =>", res.data)
+        dispatch(editBook(res.data))
+        return res.data
     })
 )
 

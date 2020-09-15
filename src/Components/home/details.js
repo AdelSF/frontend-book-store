@@ -97,7 +97,7 @@ const Image  = styled.img`
 
 const Button = styled.button`
   margin: 3rem;
-  width: 300px;
+  width: 250px;
   height: 35px;
   background-color: #5995ef;
   color: #fff;

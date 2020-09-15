@@ -41,9 +41,13 @@ class Editbook extends React.Component {
         e.preventDefault();
         this.props.editBookRequest(this.state)
         .then(book => { 
+        // state is updating onchange
         // this.props.push or....
+        this.props.push("/editbook");
+
       })
     }
+
 
     static getDerivedStateFromProps(props, state) {
         if (state.update) {

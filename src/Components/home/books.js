@@ -39,12 +39,12 @@ const Images = styled.ul`
 `
 
 const Image = styled.li`
-  margin: 1.3rem;
+  margin: 1rem;
 `
 
 const Img = styled.img`
   width: 200px;
-  height: 320px;
+  height: 300px;
 `
 
 const mapDispatchToProps = dispatch => ({
