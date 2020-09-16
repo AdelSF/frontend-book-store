@@ -4,7 +4,6 @@ export const POST_BOOKS = 'POST_BOOK'
 export const GET_BOOKS = 'GET_BOOKS'
 export const GET_BOOK = 'GET_BOOK'
 export const GET_BOOKS_DETAILS = 'GET_BOOKS_DETAILS'
-//here
 export const EDIT_BOOK  = 'EDIT_BOOK'
 
 export const getBookDetails = (id, books) => ({
@@ -50,12 +49,13 @@ export const postBookRequest = book => dispatch => (
     })
 )
 
-// here needs edit
+// 2nd here
 export const editBookRequest = book => dispatch => (
-    axios.put("http://localhost:3000/editbook", book)
+    axios.put("http://localhost:3000/editbook", book) //request raft =>
+    // stopped
+    // 6th here => result miad to response
     .then(res => {
-        console.log("res =>", res.data)
-        dispatch(editBook(res.data))
+        dispatch(editBook(res.data)) // => mire too reducer to update redux 7th
         return res.data
     })
 )

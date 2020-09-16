@@ -1,9 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import styled from 'styled-components'
 import { connect } from 'react-redux'
 import { editBookRequest } from './../../Redux/actions'
-
 
 
 
@@ -11,6 +10,7 @@ class Editbook extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            redirectToReferrer: false,
             update: true,
             book: {
                 name: '',
@@ -29,6 +29,7 @@ class Editbook extends React.Component {
         this.onSubmit = this.onSubmit.bind(this)
       } 
 
+
     onChange(e) {
         let book = {
             ...this.state.book,
@@ -37,17 +38,21 @@ class Editbook extends React.Component {
         this.setState({ book })
     }
 
+
+    // 1- First 
     onSubmit(e) {
         e.preventDefault();
-        this.props.editBookRequest(this.state)
-        .then(book => { 
+        this.props.editBookRequest(this.state.book);
+        alert("sucssessfully edited"); // basic alert, I will change it with React-alert package
+        this.setState({ redirectToReferrer: true })
+        // <Redirect to="/details" />
+        // alert("book was updated")
+        // .then(book => { 
         // state is updating onchange
         // this.props.push or....
-        this.props.push("/editbook");
-
-      })
+        // this.props.push("/editbook");
+      // })
     }
-
 
     static getDerivedStateFromProps(props, state) {
         if (state.update) {
@@ -60,7 +65,12 @@ class Editbook extends React.Component {
     }
  
     render() {
-        const { name, author, year, country, img, series, contributors, edition, grade, keywords } = this.state.book
+        const { name, author, year, country, img, series, contributors, edition, grade, keywords } = this.state.book;
+        const redirectToReferrer = this.state.redirectToReferrer;
+        if (redirectToReferrer === true) {
+            return <Redirect to="/details" />
+        }
+
         return (
             <>
                 <H1>Edit Book</H1>
@@ -166,7 +176,6 @@ class Editbook extends React.Component {
                         />
                     </Label>
                     <Button type="submit">Submit</Button>
-
                 </Form>
             </>
         );
@@ -191,10 +200,6 @@ export default connect(mapStateToProps, mapDispatchToProps)(Editbook)
 const H1 = styled.h1`
     border: 1px solid black;
     padding: 10px;
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
     display: flex;
     align-items: center;
     justify-content: center;
