@@ -3,20 +3,24 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import Developer from './developer'
 
+
+
 const About = () => (
     <>
-        <Div>
-             <h1>Team Members</h1>
-        </Div>        
+        <H1>Team Members</H1>
         <Developer />
     </>
 )
 
-const Div = styled.div`
-    margin: 1% 20%;
-    padding: 1%;
-    display: flex;
-    justify-content: center;
-`
 
 export default About
+
+
+const H1 = styled.h1`
+    border: 1px solid black;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: lightyellow;
+`

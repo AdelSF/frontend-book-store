@@ -2,7 +2,8 @@ import {
   GET_BOOKS,
   GET_BOOK,
   GET_BOOKS_DETAILS,
-  EDIT_BOOK
+  EDIT_BOOK,
+  ADD_USER
 } from './actions'
 
 export function books(state = [], action) {
@@ -23,6 +24,15 @@ export function book(state = {}, action) {
     case GET_BOOK:
       return action.payload
     case EDIT_BOOK:
+      return action.payload
+    default:
+      return state
+  }
+}
+
+export function users(state = [], action) {
+  switch (action.type) {
+    case ADD_USER:
       return action.payload
     default:
       return state

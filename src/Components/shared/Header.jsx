@@ -6,6 +6,8 @@ const Header = () => (
     <Container>
         <ul>
             <Image src="../assets/logo.png" alt="logo"/>
+            <Li><Link to='/signup' style={{textDecoration: 'none'}}>sign up</Link></Li>
+            <Li><Link to='/login' style={{textDecoration: 'none'}}>login</Link></Li>
             <Li><Link to='/about' style={{textDecoration: 'none'}}>about</Link></Li>
             <Li><Link to='/upload' style={{textDecoration: 'none'}} >upload</Link></Li>
             <Li><Link to='/' style={{textDecoration: 'none'}}>home</Link></Li>

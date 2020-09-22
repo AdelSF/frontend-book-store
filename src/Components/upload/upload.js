@@ -162,10 +162,6 @@ export default connect(null, mapDispatchToProps)(withRouter(Upload))
 const H1 = styled.h1`
   border: 1px solid black;
   padding: 10px;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
   display: flex;
   align-items: center;
   justify-content: center;

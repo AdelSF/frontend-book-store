@@ -2,15 +2,16 @@ import React from 'react';
 import { Link, Redirect } from 'react-router-dom'
 import styled from 'styled-components'
 import { connect } from 'react-redux'
+import { withRouter } from "react-router-dom";
 import { editBookRequest } from './../../Redux/actions'
+
 
 
 
 class Editbook extends React.Component {
     constructor(props) {
-        super(props);
+        super(props)
         this.state = {
-            redirectToReferrer: false,
             update: true,
             book: {
                 name: '',
@@ -38,20 +39,13 @@ class Editbook extends React.Component {
         this.setState({ book })
     }
 
-
     // 1- First 
     onSubmit(e) {
-        e.preventDefault();
-        this.props.editBookRequest(this.state.book);
-        alert("sucssessfully edited"); // basic alert, I will change it with React-alert package
-        this.setState({ redirectToReferrer: true })
-        // <Redirect to="/details" />
-        // alert("book was updated")
-        // .then(book => { 
-        // state is updating onchange
-        // this.props.push or....
-        // this.props.push("/editbook");
-      // })
+        e.preventDefault()
+        this.props.editBookRequest(this.state.book)
+        .then(book => {
+            this.props.history.push(`/${book.id}`)
+        })
     }
 
     static getDerivedStateFromProps(props, state) {
@@ -66,10 +60,6 @@ class Editbook extends React.Component {
  
     render() {
         const { name, author, year, country, img, series, contributors, edition, grade, keywords } = this.state.book;
-        const redirectToReferrer = this.state.redirectToReferrer;
-        if (redirectToReferrer === true) {
-            return <Redirect to="/details" />
-        }
 
         return (
             <>
@@ -192,7 +182,7 @@ const mapDispatchToProps = dispatch => ({
 
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(Editbook)
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Editbook))
 
 
   

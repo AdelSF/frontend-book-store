@@ -5,6 +5,7 @@ export const GET_BOOKS = 'GET_BOOKS'
 export const GET_BOOK = 'GET_BOOK'
 export const GET_BOOKS_DETAILS = 'GET_BOOKS_DETAILS'
 export const EDIT_BOOK  = 'EDIT_BOOK'
+export const ADD_USER  = 'ADD_USER'
 
 export const getBookDetails = (id, books) => ({
     type: GET_BOOKS_DETAILS,
@@ -29,6 +30,11 @@ export const getBook = (book) => ({
 export const editBook = (book) => ({
     type: EDIT_BOOK,
     payload: book
+})
+
+export const addUser = (users) => ({
+    type: ADD_USER,
+    payload: users
 })
 
 export const getBooksRequest = dispatch => {
@@ -56,7 +62,7 @@ export const editBookRequest = book => dispatch => (
     // 6th here => result miad to response
     .then(res => {
         dispatch(editBook(res.data)) // => mire too reducer to update redux 7th
-        return res.data
+        return res.data  // => bad az update kardan redux, in be onvane book dar propmise editBook
     })
 )
 
@@ -64,6 +70,16 @@ export const getBookById = id => dispatch => (
     axios.get(`http://localhost:3000/${id}`)
     .then(res => {
         dispatch(getBook(res.data))
+        return res.data
+    })
+)
+
+
+export const postUserRequest = user => dispatch => (
+    axios.post("http://localhost:3000/adduser", user)
+    .then(res => {
+        console.log('res.data => ', res.data);
+        dispatch(addUser(res.data))
         return res.data
     })
 )
