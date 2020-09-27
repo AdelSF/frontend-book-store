@@ -11,6 +11,8 @@ class Books extends React.Component {
     this.props.getBooksRequest()
   }
 
+
+  //first here
   handleClick(id) {
     this.props.getBookDetails(id, this.props.books)
   }
@@ -21,7 +23,7 @@ class Books extends React.Component {
       <Images>
         {books.map(book => (
           <Image key={book.id}>
-            <Link to={`${book.id}`} onClick={ () => this.handleClick(book.id) }>
+            <Link to={`book/${book.id}`} onClick={ () => this.handleClick(book.id) }>
               <Img src={book.img} alt={book.name} />
               <p>{book.name}</p>
             </Link>
@@ -55,6 +57,8 @@ const mapStateToProps = state => ({
   books: state.books
 })
 
+
+// connect() function connects a react component to a redux store
 export default connect(mapStateToProps, mapDispatchToProps)(Books)
 
 

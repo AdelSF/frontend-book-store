@@ -4,13 +4,13 @@ import styled from 'styled-components';
 import { connect } from 'react-redux'
 import { getBookById } from '../../Redux/actions'
 
-class Details extends React.Component {
+class Profile extends React.Component {
 
   componentDidMount() {
-    if (Object.keys(this.props.book).length === 0) {
-      const id = location.pathname.replace('/', '')
-      this.props.getBookById(id)
-    }
+    // if (Object.keys(this.props.book).length === 0) {
+    //   const id = location.pathname.replace('/', '')
+    //   this.props.getBookById(id)
+    // }
   }
 
   render() {
@@ -18,7 +18,7 @@ class Details extends React.Component {
     const { name, author, year, country, img, series, contributors, edition, grade, keywords } = this.props.book;
     return (
       <Container>
-        <ContainerDetails>
+        {/* <ContainerDetails>
           <Div>
               Title: 
               {name}   
@@ -60,25 +60,27 @@ class Details extends React.Component {
         </ContainerDetails>
         <Div>
           <Image src={img}></Image>
-        </Div>
+        </Div> */}
       </Container>
     )
   }
 }
 
-const mapStateToProps = state => ({
-  book: state.book
-})
+// const mapStateToProps = state => ({
+//   book: state.book
+// })
 
-const mapDispatchToProps = dispatch => ({
-  getBookById: (id) => dispatch(getBookById(id))
-})
+// const mapDispatchToProps = dispatch => ({
+//   getBookById: (id) => dispatch(getBookById(id))
+// })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Details)
+// export default connect(mapStateToProps, mapDispatchToProps)(Details)
 
 // connect() function connects a react component to a redux store
 // mapStateToProps is a function that you would use to provide the store data to your component,
 // mapDispatchToProps is something that you will use to provide the action creators as props to your component.
+
+export default Profile;
 
 const Container = styled.section`
   display: flex;
@@ -111,7 +113,7 @@ const Button = styled.button`
 
 
 
-
+//=======================================================
 
 
 

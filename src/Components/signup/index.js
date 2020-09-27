@@ -32,7 +32,7 @@ class Signup extends React.Component {
         e.preventDefault();
         this.props.postUserRequest(this.state)
         .then(user => {
-            this.props.history.push(`/${user.id}`);
+            this.props.history.push(`/user${user.id}`);
         })
     }
       

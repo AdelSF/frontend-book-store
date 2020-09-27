@@ -170,13 +170,13 @@ const H1 = styled.h1`
 
 
 const Form = styled.form`
-    margin: 2rem 12rem;
-    border: 2px solid black;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: lightyellow;
+  margin: 2rem 12rem;
+  border: 2px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: lightyellow;
 `;
 
   const Label  = styled.label`
@@ -191,18 +191,18 @@ const Form = styled.form`
 
 
 const Input = styled.input`
-    width: 300px;
-    height: 35px;
-    border: 1px solid #ccc;
-    background-color: #fff;
-    display: block;
-  `;
+  width: 300px;
+  height: 35px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  display: block;
+`;
 
   const Button = styled.button`
-    margin: 3rem;
-    width: 300px;
-    height: 35px;
-    background-color: #5995ef;
-    color: #fff;
-    border-radius: 3px;
-  `;
+  margin: 3rem;
+  width: 300px;
+  height: 35px;
+  background-color: #5995ef;
+  color: #fff;
+  border-radius: 3px;
+`;

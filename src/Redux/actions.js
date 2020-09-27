@@ -4,6 +4,7 @@ export const POST_BOOKS = 'POST_BOOK'
 export const GET_BOOKS = 'GET_BOOKS'
 export const GET_BOOK = 'GET_BOOK'
 export const GET_BOOKS_DETAILS = 'GET_BOOKS_DETAILS'
+// export const GET_USER_DETAILS = 'GET_USER_DETAILS'
 export const EDIT_BOOK  = 'EDIT_BOOK'
 export const ADD_USER  = 'ADD_USER'
 
@@ -11,6 +12,11 @@ export const getBookDetails = (id, books) => ({
     type: GET_BOOKS_DETAILS,
     payload: {id, books}
 })
+
+// export const getUserDetails = (id, books) => ({
+//     type: GET_User_DETAILS,
+//     payload: {id, Users}
+// })
 
 export const postBook = (book) => ({
     type: POST_BOOK,
@@ -66,8 +72,9 @@ export const editBookRequest = book => dispatch => (
     })
 )
 
+// changed here =========
 export const getBookById = id => dispatch => (
-    axios.get(`http://localhost:3000/${id}`)
+    axios.get(`http://localhost:3000/book/${id}`)
     .then(res => {
         dispatch(getBook(res.data))
         return res.data
