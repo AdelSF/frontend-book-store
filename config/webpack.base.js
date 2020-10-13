@@ -6,10 +6,11 @@ const SRC_DIR = path.resolve(__dirname, "src");
 const ASSETS_DIR = path.resolve(__dirname, "../assets");
 
 module.exports = {
-    entry: './src/index.js',
+    entry: ["@babel/polyfill", "./src/index.js"],
     output: {
         path: DIST_DIR,
-        filename: 'bundle.js'
+        filename: 'bundle.js',
+        publicPath: '/'
     },
     module: {
         rules: [
