@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link, Redirect } from 'react-router-dom'
 import styled from 'styled-components'
-
+import { withRouter } from "react-router-dom";
+import { connect } from 'react-redux'
+import { loginRequest } from './../../Redux/actions'
 
 class Login extends React.Component {
     constructor(props) {
@@ -10,24 +12,47 @@ class Login extends React.Component {
             email: "",
             password: ""
         }
+        this.onChange = this.onChange.bind(this)
+        this.onSubmit = this.onSubmit.bind(this)
+    }
+
+    onChange(e) {
+        this.setState({ [e.target.name]: e.target.value });
+    }
+
+    onSubmit(e) {
+        e.preventDefault();
+        this.props.loginRequest(this.state)
+        // .then(user => {
+        //     this.props.history.push(`/user${user.id}`);
+        // })
     }
 
 
-
-
     render() {
+        const { email, password } = this.state
         return (
             <>
                 <H1>Login Section</H1>
-                <Form>
+                <Form onSubmit={this.onSubmit} autocomplete="on">
                     <Label htmlFor='email'> Email:
-                        <Input type="text" name='email' />
+                        <Input
+                            type="text"
+                            name='email'
+                            value={ email }
+                            onChange={this.onChange}
+                        />
                     </Label>
                     <Label htmlFor='password'> Password:
-                        <Input type="text" name='password' />
+                        <Input
+                            type="password"
+                            name='password'
+                            value={ password }
+                            onChange={this.onChange}
+                        />
                     </Label>
                     <Button type='submit'>Login</Button>
-                    <Button2><Link to='/signup' style={{textDecoration: 'none'}}>Sign up</Link></Button2>
+                    <Button2><Link2 to='/signup' >Sign up</Link2></Button2>
                     
                 </Form>
 
@@ -37,7 +62,15 @@ class Login extends React.Component {
 }
 
 
-export default Login
+const mapDispatchToProps = dispatch => ({
+    loginRequest: (user) => dispatch(loginRequest(user))
+})
+
+export default connect(null, mapDispatchToProps)(withRouter(Login))
+
+const Link2 = styled(Link)`
+    text-decoration: none;
+`
 
 const H1 = styled.h1`
     border: 1px solid black;

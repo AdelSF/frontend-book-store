@@ -10,7 +10,7 @@ import { postUserRequest } from './../../Redux/actions'
 class Signup extends React.Component {
     constructor(props) {
         super(props)
-        this.state = { 
+        this.state = {
             fname: "",
             lname: "",
             email: "",
@@ -27,20 +27,22 @@ class Signup extends React.Component {
 
       }
 
-    
+
+    // 1st here
     onSubmit(e) {
         e.preventDefault();
         this.props.postUserRequest(this.state)
         .then(user => {
-            this.props.history.push(`/user${user.id}`);
+            console.log('=> user', user)
+            this.props.history.push(`/login`);
+            // message or alert to say seccusfully signed up
         })
     }
       
 
 
-
     render() {
-        const { fname, lname, email, password} = this.state;
+        const { fname, lname, email, password } = this.state;
         return (
             <>
                 <H1>Sign Up Section</H1>
