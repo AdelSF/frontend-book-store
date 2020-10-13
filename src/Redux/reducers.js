@@ -30,8 +30,9 @@ export function book(state = {}, action) {
             return state
           }
         }
-        
-export function users(state = [], action) {
+
+ //7th here       
+export function users(state = {}, action) {
   switch (action.type) {
     case ADD_USER:
       return action.payload

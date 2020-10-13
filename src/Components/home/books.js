@@ -19,6 +19,8 @@ class Books extends React.Component {
   
   render() {
     const { books } = this.props;
+    this.props.getName("Majid")
+    console.log('this.props => ', this.props);
     return (
       <Images>
         {books.map(book => (
