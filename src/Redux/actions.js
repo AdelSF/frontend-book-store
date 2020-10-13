@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { verify } from '../Util/Auth'
 
 export const POST_BOOKS = 'POST_BOOK'
 export const GET_BOOKS = 'GET_BOOKS'
@@ -83,8 +84,7 @@ export const postUserRequest = user => dispatch => (
     axios.post("http://localhost:3000/signup", user)
     .then(res => {
 // 6th here
-        console.log('res.data => ', res.data);
-        dispatch(addUser(res.data))
+        // dispatch(addUser(res.data))
         return res.data
     })
 )
@@ -92,8 +92,9 @@ export const postUserRequest = user => dispatch => (
 export const loginRequest = user => dispatch => (
     axios.post("http://localhost:3000/signin", user)
     .then(res => {
-        console.log('res.data => ', res.data);
-        // dispatch(signin(res.data))
+        let token = res.data
+        let user = verify(token)
+        dispatch(addUser(user))
         return res.data
     })
 )

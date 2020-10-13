@@ -23,9 +23,9 @@ class Login extends React.Component {
     onSubmit(e) {
         e.preventDefault();
         this.props.loginRequest(this.state)
-        // .then(user => {
-        //     this.props.history.push(`/user${user.id}`);
-        // })
+        .then(result => {
+            this.props.history.push(`/`);
+        })
     }
 
 

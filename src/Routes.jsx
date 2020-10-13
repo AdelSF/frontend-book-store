@@ -10,6 +10,7 @@ import Login from './Components/login/index'
 import Signup from './Components/signup/index'
 import Header from './Components/shared/Header.jsx'
 import { Switch, Route, BrowserRouter } from 'react-router-dom'
+import Auth from './Util/Auth'
 
 
 
@@ -29,9 +30,9 @@ const Routes = () => (
               {/* <Route path="/user/:id"><Profile /></Route> */}
               <Route path="/signup"><Signup /></Route>
               <Route path="/about"><About /></Route>
-              <Route path="/upload"><Upload /></Route>
+              <Auth path="/upload"><Upload /></Auth>
               <Route path="/login"><Login /></Route>
-              <Route path="/editbook"><Editbook /></Route>
+              <Auth path="/editbook"><Editbook /></Auth>
               <Route path="/"><Home /></Route>
             </Switch>
         </BrowserRouter>
