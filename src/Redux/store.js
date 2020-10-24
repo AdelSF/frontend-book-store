@@ -1,7 +1,8 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux'
-import logger from 'redux-logger'
+import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk'
 import { books, book, users } from './reducers'
+
 
 const reducers = combineReducers({
     books,
@@ -9,8 +10,8 @@ const reducers = combineReducers({
     users
 })
 
-const store = createStore(
-    reducers, /* preloadedState, */
-    applyMiddleware(thunk, logger)
-  );
+const store = createStore(reducers, composeWithDevTools(
+  applyMiddleware(thunk)
+))
+
 export default store

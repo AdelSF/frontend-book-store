@@ -14,7 +14,8 @@ class Signup extends React.Component {
             fname: "",
             lname: "",
             email: "",
-            password: ""
+            password: "",
+            message: {color: "red", text: ""}
         }
         this.onChange = this.onChange.bind(this)
         this.onSubmit = this.onSubmit.bind(this)
@@ -32,21 +33,33 @@ class Signup extends React.Component {
     onSubmit(e) {
         e.preventDefault();
         this.props.postUserRequest(this.state)
-        .then(user => {
-            console.log('=> user', user)
-            this.props.history.push(`/login`);
-            // message or alert to say seccusfully signed up
+        .then(response => {
+            if(response.status === 200) {
+                this.setState({ message: {
+                    text: response.data.msg,
+                    color: "green"
+                }})
+                setTimeout(() => {
+                    this.props.history.push(`/login`)
+                }, 3000)
+            } else if (response.status === 409) {
+                this.setState({ message: {
+                    text: response.data.error,
+                    color: "red"
+                }})
+            }
         })
     }
       
 
 
     render() {
-        const { fname, lname, email, password } = this.state;
+        const { fname, lname, email, password, message } = this.state;
         return (
             <>
                 <H1>Sign Up Section</H1>
                 <Form onSubmit={this.onSubmit} autocomplete="on">
+                    <Message color={message.color}>{message.text}</Message>
                     <Label htmlFor='fname'> First Name:
                         <Input 
                             type="text" 
@@ -112,16 +125,20 @@ const Form = styled.form`
     align-items: center;
     justify-content: center;
     background-color: lightyellow;
-`;
+`
 
-  const Label  = styled.label`
+const Message = styled.h3`
+    color: ${({color}) => color};
+`
+
+const Label  = styled.label`
   /* margin: 20px; */
   margin-top: 15px;
   /* margin-left: 30%; */
   padding: 5px;
   display: block;
   /* display: block; */
-`; 
+`
 
 
 

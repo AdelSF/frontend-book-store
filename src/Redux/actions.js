@@ -79,22 +79,25 @@ export const getBookById = id => dispatch => (
 
 
 
-// 2nd here
 export const postUserRequest = user => dispatch => (
     axios.post("http://localhost:3000/signup", user)
     .then(res => {
-// 6th here
-        // dispatch(addUser(res.data))
-        return res.data
+        return res
+    })
+    .catch(error => {
+        return error.response
     })
 )
 
 export const loginRequest = user => dispatch => (
     axios.post("http://localhost:3000/signin", user)
     .then(res => {
-        let token = res.data
+        let token = res.data.token
         let user = verify(token)
         dispatch(addUser(user))
-        return res.data
+        return res
+    })
+    .catch(error => {
+        return error.response
     })
 )

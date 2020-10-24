@@ -10,7 +10,8 @@ class Login extends React.Component {
         super(props)
         this.state = { 
             email: "",
-            password: ""
+            password: "",
+            error: ""
         }
         this.onChange = this.onChange.bind(this)
         this.onSubmit = this.onSubmit.bind(this)
@@ -23,18 +24,24 @@ class Login extends React.Component {
     onSubmit(e) {
         e.preventDefault();
         this.props.loginRequest(this.state)
-        .then(result => {
-            this.props.history.push(`/`);
+        .then(response => {
+            if(response.status === 200) {
+                this.props.history.push(`/upload`)
+            } else if (response.status === 401) {
+                console.log('response', response);
+                this.setState({ error: response.data.error})
+            }
         })
     }
 
 
     render() {
-        const { email, password } = this.state
+        const { email, password, error } = this.state
         return (
             <>
                 <H1>Login Section</H1>
                 <Form onSubmit={this.onSubmit} autocomplete="on">
+                    <Message>{error}</Message>
                     <Label htmlFor='email'> Email:
                         <Input
                             type="text"
@@ -90,9 +97,13 @@ const Form = styled.form`
     align-items: center;
     justify-content: center;
     background-color: lightyellow;
-`;
+`
 
-  const Label  = styled.label`
+const Message = styled.h3`
+    color: red;
+`
+
+const Label  = styled.label`
   /* margin: 20px; */
   margin-top: 15px;
   /* margin-left: 30%; */
